@@ -12,6 +12,7 @@
 # .pop()
 # .shift()
 # .unshift(adt)
+# .search(value) <Array>
 
 module.exports = class Children
 
@@ -24,7 +25,7 @@ module.exports = class Children
       else if index < 0
         0
       else
-        @_cursor
+        index
     @_arr[@_cursor]
 
   current: () ->
@@ -65,3 +66,8 @@ module.exports = class Children
 
   unshift: (adt) ->
     @_arr.unshift adt
+
+  search: (value) ->
+    result = []
+    result = result.concat child.search value for child in @_arr
+    result

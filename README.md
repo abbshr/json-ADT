@@ -2,7 +2,9 @@
 
 [![npm version](https://badge.fury.io/js/node-adt.svg)](http://badge.fury.io/js/node-adt)
 
-针对复杂的json数据，转换成树ADT，增加ADT操作。
+针对复杂的json数据, 转换成易于编程操作的Tree ADT.
+
+JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在JavaScript中操作起来也略有不便. 例如庞大的JSON配置文件, 从中提取需要的值并找出其关联父节点和子节点等要求是比较困难的, 但如果将原始数据结构转换成ADT, 就得到了丰富的操作方法, 如搜索, 查询, 插入, 更新, 删除等等.
 
 ## install
 
@@ -16,27 +18,56 @@
   ADT = require 'node-adt'
   json = require 'test.json'
 
+  # 每个json解析后都对应一个根节点
   root = new ADT json
 
-  console.log root.name
-  console.log root.value
-  console.log root.root()
-  console.log root.parent()
+  # 根节点默认name为"root"
+  root.name
 
+  # 值默认为null
+  root.value
+
+  # 所有ADT实例都有一个指向根节点的指针
+  root.root()
+
+  # 获取root adt的父节点(为null)
+  root.parent()
+
+  # 获取root adt的子节点, 返回Children类型的值, 是一个ADT列表
   children = root.children()
 
-  console.log children.previous()
-  console.log children.current()
-  console.log children.next()
+  # children中游标指向当前节点的前一个节点(adt)
+  children.previous()
+
+  # 当前游标指向的节点
+  children.current()
+
+  # 游标的下一个节点
+  children.next()
+
+  # 直接访问编号为1的子节(同时更新游标)
+  children.from 1
+  # 或
+  root.children 1
 
   # 访问数组结构
+  # node-adt将数组结构视为一系列键为索引值的子节点
   children.from 1
   .children 2
   .children()
 
+  # 限定在Children或ADT作用域内, 按值搜索节点, 返回值是'value2-2'的所有节点
+  children.search 'value2-2'
+  root.search 'value2-2'
+
+  # 切换到root的第二个子节点, 将不会搜索到"value1"对应的节点
+  children.from 1
+  .search 'value1'
+  # => []
+
 ```
 
-JSON data:
+上文示例JSON data:
 
 ```json
 {
@@ -50,19 +81,17 @@ JSON data:
       "value2-3-1",
       "value2-3-2",
       {
-        "key2-3-3-1": "value2-3-3-1"
-      }
-    ]
+        "key2-3-3-1": "value2-2"
+      }]
   },
   "key3": "value3",
   "key4": {
     "key4-1": "value4-1",
     "key4-2": {
-      "key4-2-1": "value4-2-1"
+      "key4-2-1": "value2-2"
     }
   }
 }
-
 ```
 
 ## run example
@@ -70,10 +99,6 @@ JSON data:
 ```sh
   npm test
 ```
-
-## TODO
-
-+ 增加搜索功能
 
 ## API
 
@@ -90,9 +115,11 @@ JSON data:
 
 # operation
 #
-# .children()
-# .parent()
-# .root()
+# .children() <Children>
+# .children(index) <ADT>
+# .parent() <ADT>
+# .root() <ADT>
+# .search(value) <Array>
 
 # children operation
 #
@@ -107,4 +134,5 @@ JSON data:
 # .pop()
 # .shift()
 # .unshift(adt)
+# .search(value) <Array>
 ```

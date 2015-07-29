@@ -14,9 +14,11 @@
 
 # operation
 #
-# .children()
-# .parent()
-# .root()
+# .children() <Children>
+# .children(index) <ADT>
+# .parent() <ADT>
+# .root() <ADT>
+# .search(value) <Array>
 
 
 util = require 'util'
@@ -64,4 +66,11 @@ module.exports = class ADT
   parent: () ->
     @_parent
 
-  # search: (scope, value) ->
+  search: (value) ->
+    result = []
+    if @value is value
+      result.push @
+    if @_children?
+      result = result.concat @_children.search value
+    else
+      result

@@ -3,13 +3,11 @@ json = require './test.json'
 
 root = new ADT json
 
-# console.log root.name
-# console.log root.value
-# console.log root.root()
-# console.log root.parent()
-
-children = root.children 1
-
-# console.log children.previous()
-# console.log children.current()
-# console.log children.next()
+console.log child = root.children 1
+console.log root.root()
+console.log child.name
+console.log child.value
+console.log child.parent()
+console.log child.root()
+console.log child.children()
+console.log child.children().search 'value2-2'
