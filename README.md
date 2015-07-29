@@ -1,5 +1,7 @@
 # json-ADT
 
+[![npm version](https://badge.fury.io/js/node-adt.svg)](http://badge.fury.io/js/node-adt)
+
 针对复杂的json数据，转换成树ADT，增加ADT操作。
 
 ## install
