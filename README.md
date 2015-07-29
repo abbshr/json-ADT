@@ -29,6 +29,27 @@
 
 ```
 
+JSON data:
+
+```json
+{
+  "key1": "value1",
+  "key2": {
+    "key2-1": {
+      "key2-1-1": "value2-1-1"
+    },
+    "key2-2": "value2-2"
+  },
+  "key3": "value3",
+  "key4": {
+    "key4-1": "value4-1",
+    "key4-2": {
+      "key4-2-1": "value4-2-1"
+    }
+  }
+}
+```
+
 ## run example
 
 ```sh
@@ -37,6 +58,7 @@
 
 ## TODO
 
++ 支持数组结构处理
 + 增加搜索功能
 
 ## API

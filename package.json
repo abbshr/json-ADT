@@ -1,8 +1,8 @@
 {
   "name": "node-adt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "transfer json to ADT",
-  "main": "index.js",
+  "main": "index.coffee",
   "scripts": {
     "test": "coffee test/index.coffee"
   },
