@@ -20,9 +20,11 @@ module.exports = class Children
 
   from: (index) ->
     @_cursor = if index >= @_arr.length
-      @_arr.length - 1
-    else if index < 0
-      0
+        @_arr.length - 1
+      else if index < 0
+        0
+      else
+        @_cursor
     @_arr[@_cursor]
 
   current: () ->

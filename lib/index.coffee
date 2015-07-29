@@ -36,11 +36,19 @@ module.exports = class ADT
       @_transfer json
 
   _transfer: (obj) ->
-    children_arr = for k, v of obj
-      node = new ADT v, @_root
-      node.name = k
-      node._parent = @
-      node
+    children_arr =
+    if util.isArray obj
+      for v, i in obj
+        node = new ADT v, @_root
+        node.name = i
+        node._parent = @
+        node
+    else
+      for k, v of obj
+        node = new ADT v, @_root
+        node.name = k
+        node._parent = @
+        node
 
     @_children = new Children children_arr
 

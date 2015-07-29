@@ -1,6 +1,6 @@
 # json-ADT
 
-针对复杂的json数据，转换成树ADT，增加便捷操作。
+针对复杂的json数据，转换成树ADT，增加ADT操作。
 
 ## install
 
@@ -27,6 +27,11 @@
   console.log children.current()
   console.log children.next()
 
+  # 访问数组结构
+  children.from 1
+  .children 2
+  .children()
+
 ```
 
 JSON data:
@@ -38,7 +43,14 @@ JSON data:
     "key2-1": {
       "key2-1-1": "value2-1-1"
     },
-    "key2-2": "value2-2"
+    "key2-2": "value2-2",
+    "key2-3": [
+      "value2-3-1",
+      "value2-3-2",
+      {
+        "key2-3-3-1": "value2-3-3-1"
+      }
+    ]
   },
   "key3": "value3",
   "key4": {
@@ -48,6 +60,7 @@ JSON data:
     }
   }
 }
+
 ```
 
 ## run example
@@ -58,7 +71,6 @@ JSON data:
 
 ## TODO
 
-+ 支持数组结构处理
 + 增加搜索功能
 
 ## API
