@@ -1,0 +1,17 @@
+{
+  "name": "node-adt",
+  "version": "1.0.0",
+  "description": "transfer json to ADT",
+  "main": "index.js",
+  "scripts": {
+    "test": "coffee test/index.coffee"
+  },
+  "author": "ran <abbshr@outlook.com>",
+  "license": "MIT",
+  "keywords": [
+    "ADT",
+    "json",
+    "transfer",
+    "json-transfer"
+  ]
+}
