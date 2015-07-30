@@ -26,7 +26,7 @@
 util = require 'util'
 Children = require './children'
 
-module.exports = class ADT
+class ADT
 
   constructor: (json, @_root = @) ->
     @name = "root"
@@ -42,19 +42,17 @@ module.exports = class ADT
   _transfer: (obj) ->
     children_arr =
     if util.isArray obj
-      for v, i in obj
-        node = new ADT v, @_root
-        node.name = i
-        node._parent = @
-        node
+      @_createChildADT i, v for v, i in obj
     else
-      for k, v of obj
-        node = new ADT v, @_root
-        node.name = k
-        node._parent = @
-        node
+      @_createChildADT k, v for k, v of obj
 
     @_children = new Children children_arr
+
+  _createChildADT: (k, v) ->
+    node = new ADT v, @_root
+    node.name = k
+    node._parent = @
+    node
 
   root: () ->
     @_root
@@ -76,3 +74,5 @@ module.exports = class ADT
       result = result.concat @_children.search value
     else
       result
+
+module.exports = ADT
