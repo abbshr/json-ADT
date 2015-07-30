@@ -4,12 +4,14 @@
 
 # Tree ADT
 #
-# struct {
-#   name <string>,
-#   value <string>,
-#   _parent <object>,
-#   _children <object>,
-#   _root <object>
+# struct ADT {
+#   public:
+#     name <string>,
+#     value <string>,
+#   private:
+#     _parent <object>,
+#     _children <object>,
+#     _root <object>
 # }
 
 # operation
@@ -59,7 +61,7 @@ module.exports = class ADT
 
   children: (i) ->
     if i?
-      @_children.from i
+      @_children?.from i
     else
       @_children
 
