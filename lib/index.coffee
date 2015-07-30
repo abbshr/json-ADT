@@ -31,7 +31,7 @@ module.exports = class ADT
   constructor: (json, @_root = @) ->
     @name = "root"
     @_parent = null
-    if util.isString json
+    if util.isPrimitive json
       @value = json
       @_children = null
     else
