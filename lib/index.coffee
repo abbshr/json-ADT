@@ -10,14 +10,17 @@
 #   _parent <object>,
 #   _children <object>,
 #   _root <object>
+#   _raw <object>
 # }
 
 # operation
 #
 # .children() <Children>
-# .children(index) <ADT>
+# .children(number) <ADT>
+# .children(string) [<ADT>]
 # .parent() <ADT>
 # .root() <ADT>
+# .raw() <JSON Object>
 # .search(value) <Array>
 
 
@@ -29,6 +32,7 @@ module.exports = class ADT
   constructor: (json, @_root = @) ->
     @name = "root"
     @_parent = null
+    @_raw = json
     if util.isString json
       @value = json
       @_children = null
@@ -57,14 +61,19 @@ module.exports = class ADT
   root: () ->
     @_root
 
-  children: (i) ->
-    if i?
-      @_children.from i
-    else
-      @_children
+  raw: () ->
+    @_raw
 
-  parent: () ->
-    @_parent
+  children: (i) ->
+    switch
+      when not i? then @_children
+      when util.isString i then @_children.key i
+      when util.isNumber i then @_children.from i
+
+  parent: (level = 1) ->
+    parent = @
+    parent = parent?._parent for [0..level - 1]
+    parent
 
   search: (value) ->
     result = []
