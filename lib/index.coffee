@@ -73,7 +73,7 @@ class ADT
 
   parent: (level = 1) ->
     parent = @
-    parent = parent?._parent for [0..level - 1]
+    parent = parent?._parent for [1..level]
     parent
 
   search: (value) ->
