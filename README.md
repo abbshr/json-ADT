@@ -111,19 +111,23 @@ JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在Jav
 #   _parent <object>,
 #   _children <object>,
 #   _root <object>
+#   _raw <object>
 # }
 
 # operation
 #
 # .children() <Children>
-# .children(index) <ADT>
+# .children(number) <ADT>
+# .children(string) [<ADT>]
 # .parent() <ADT>
 # .root() <ADT>
+# .raw() <JSON Object>
 # .search(value) <Array>
 
 # children operation
 #
 # .from(index) <ADT>
+# .key(name) [<ADT>]
 # .current() <ADT>
 # .next() <ADT>
 # .previous() <ADT>
