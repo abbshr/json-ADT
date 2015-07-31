@@ -5,12 +5,14 @@
 # Tree ADT
 #
 # struct {
-#   name <string>,
-#   value <string>,
-#   _parent <object>,
-#   _children <object>,
-#   _root <object>
-#   _raw <object>
+#   public:
+#     name <string>,
+#     value <string>,
+#   private:
+#     _parent <object>,
+#     _children <object>,
+#     _root <object>
+#     _raw <object>
 # }
 
 # operation
@@ -27,13 +29,14 @@
 util = require 'util'
 Children = require './children'
 
-module.exports = class ADT
+class ADT
 
   constructor: (json, @_root = @) ->
     @name = "root"
     @_parent = null
     @_raw = json
-    if util.isString json
+
+    if util.isPrimitive json
       @value = json
       @_children = null
     else
@@ -44,19 +47,17 @@ module.exports = class ADT
   _transfer: (obj) ->
     children_arr =
     if util.isArray obj
-      for v, i in obj
-        node = new ADT v, @_root
-        node.name = i
-        node._parent = @
-        node
+      @_createChildADT i, v for v, i in obj
     else
-      for k, v of obj
-        node = new ADT v, @_root
-        node.name = k
-        node._parent = @
-        node
+      @_createChildADT k, v for k, v of obj
 
     @_children = new Children children_arr
+
+  _createChildADT: (k, v) ->
+    node = new ADT v, @_root
+    node.name = k
+    node._parent = @
+    node
 
   root: () ->
     @_root
@@ -67,8 +68,8 @@ module.exports = class ADT
   children: (i) ->
     switch
       when not i? then @_children
-      when util.isString i then @_children.key i
-      when util.isNumber i then @_children.from i
+      when util.isString i then @_children?.key i
+      when util.isNumber i then @_children?.from i
 
   parent: (level = 1) ->
     parent = @
@@ -83,3 +84,5 @@ module.exports = class ADT
       result = result.concat @_children.search value
     else
       result
+
+module.exports = ADT

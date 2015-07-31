@@ -74,7 +74,8 @@ JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在Jav
   "key1": "value1",
   "key2": {
     "key2-1": {
-      "key2-1-1": "value2-1-1"
+      "key2-1-1": 2,
+      "key2-1-2": 0
     },
     "key2-2": "value2-2",
     "key2-3": [
@@ -88,9 +89,11 @@ JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在Jav
   "key4": {
     "key4-1": "value4-1",
     "key4-2": {
-      "key4-2-1": "value2-2"
+      "key4-2-1": "value2-2",
+      "key4-2-2": true
     }
-  }
+  },
+  "key5": null
 }
 ```
 
