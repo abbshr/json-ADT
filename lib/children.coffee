@@ -2,6 +2,7 @@
 # children operation
 #
 # .from(index) <ADT>
+# .key(name) [<ADT>]
 # .current() <ADT>
 # .next() <ADT>
 # .previous() <ADT>
@@ -27,6 +28,9 @@ module.exports = class Children
       else
         index
     @_arr[@_cursor]
+
+  key: (name) ->
+    child for child in @_arr when child.name is name
 
   current: () ->
     @_arr[@_cursor]
