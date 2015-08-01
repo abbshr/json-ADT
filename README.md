@@ -45,16 +45,29 @@ JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在Jav
   # 游标的下一个节点
   children.next()
 
-  # 直接访问编号为1的子节(同时更新游标)
+  # children的父节点
+  children.parent()
+
+  # 直接访问索引编号为1的子节点(同时更新游标)
   children.from 1
   # 或
   root.children 1
+  # 或者根据键名访问节点
+  root.children "key2-1"
 
   # 访问数组结构
   # node-adt将数组结构视为一系列键为索引值的子节点
-  children.from 1
+  arr = children.from 1
   .children 2
   .children()
+
+  # 调用.raw返回当前ADT对应的原始JSON
+  root.raw()
+  # 对Children也可以调用raw方法
+  children.raw()
+
+  # 可以调用parent传入层级作为参数, 向上回溯几个parent (祖先节点)
+  arr.parent 3
 
   # 限定在Children或ADT作用域内, 按值搜索节点, 返回值是'value2-2'的所有节点
   children.search 'value2-2'
@@ -109,12 +122,14 @@ JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在Jav
 # Tree ADT
 #
 # struct {
-#   name <string>,
-#   value <string>,
-#   _parent <object>,
-#   _children <object>,
-#   _root <object>
-#   _raw <object>
+#   public:
+#     name <string>,
+#     value <string>,
+#   private:
+#     _parent <object>,
+#     _children <object>,
+#     _root <object>
+#     _raw <object>
 # }
 
 # operation
@@ -123,6 +138,7 @@ JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在Jav
 # .children(number) <ADT>
 # .children(string) [<ADT>]
 # .parent() <ADT>
+# .parent(level) <ADT>
 # .root() <ADT>
 # .raw() <JSON Object>
 # .search(value) <Array>
@@ -131,6 +147,9 @@ JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在Jav
 #
 # .from(index) <ADT>
 # .key(name) [<ADT>]
+# .parent() <ADT>
+# .parent(level) <ADT>
+# .raw() <JSON object>
 # .current() <ADT>
 # .next() <ADT>
 # .previous() <ADT>
