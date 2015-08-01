@@ -26,7 +26,7 @@
 # .search(value) <Array>
 
 
-util = require 'util'
+{isString, isNumber, isPrimitive, isArray} = require 'util'
 Children = require './children'
 
 class ADT
@@ -36,7 +36,7 @@ class ADT
     @_parent = null
     @_raw = json
 
-    if util.isPrimitive json
+    if isPrimitive json
       @value = json
       @_children = null
     else
@@ -46,7 +46,7 @@ class ADT
 
   _transfer: (obj) ->
     children_arr =
-    if util.isArray obj
+    if isArray obj
       @_createChildADT i, v for v, i in obj
     else
       @_createChildADT k, v for k, v of obj
@@ -68,8 +68,8 @@ class ADT
   children: (i) ->
     switch
       when not i? then @_children
-      when util.isString i then @_children?.key i
-      when util.isNumber i then @_children?.from i
+      when isString i then @_children?.key i
+      when isNumber i then @_children?.from i
 
   parent: (level = 1) ->
     parent = @
