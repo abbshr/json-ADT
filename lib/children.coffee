@@ -2,7 +2,7 @@
 # children operation
 #
 # .from(index) <ADT>
-# .key(name) [<ADT>]
+# .key(name) <ADT>
 # .parent() <ADT>
 # .parent(level) <ADT>
 # .raw() <JSON object>
@@ -41,7 +41,7 @@ module.exports = class Children
     @_arr[@_cursor]
 
   key: (name) ->
-    child for child in @_arr when child.name is name
+    return child for child in @_arr when child.name is name
 
   current: () ->
     @_arr[@_cursor]

@@ -18,9 +18,10 @@
 # operation
 #
 # .children() <Children>
-# .children(number) <ADT>
-# .children(string) [<ADT>]
+# .children(keyindex) <ADT>
+# .children(keyname) <ADT>
 # .parent() <ADT>
+# .parent(level) <ADT>
 # .root() <ADT>
 # .raw() <JSON Object>
 # .search(value) <Array>

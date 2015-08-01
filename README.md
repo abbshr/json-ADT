@@ -53,7 +53,7 @@ JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在Jav
   # 或
   root.children 1
   # 或者根据键名访问节点
-  root.children "key2-1"
+  root.children "key2"
 
   # 访问数组结构
   # node-adt将数组结构视为一系列键为索引值的子节点
@@ -135,8 +135,8 @@ JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在Jav
 # operation
 #
 # .children() <Children>
-# .children(number) <ADT>
-# .children(string) [<ADT>]
+# .children(keyindex) <ADT>
+# .children(keyname) <ADT>
 # .parent() <ADT>
 # .parent(level) <ADT>
 # .root() <ADT>
@@ -146,7 +146,7 @@ JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在Jav
 # children operation
 #
 # .from(index) <ADT>
-# .key(name) [<ADT>]
+# .key(name) <ADT>
 # .parent() <ADT>
 # .parent(level) <ADT>
 # .raw() <JSON object>
