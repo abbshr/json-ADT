@@ -18,8 +18,6 @@
 # .unshift(adt)
 # .search(value) <Array>
 
-{isNumber} = require 'util'
-
 module.exports = class Children
 
   constructor: (@_arr = children_arr) ->

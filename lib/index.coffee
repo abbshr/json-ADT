@@ -41,7 +41,6 @@ class ADT
       @_children = null
     else
       @value = null
-      @_children = []
       @_transfer json
 
   _transfer: (obj) ->
