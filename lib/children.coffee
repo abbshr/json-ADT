@@ -3,6 +3,9 @@
 #
 # .from(index) <ADT>
 # .key(name) [<ADT>]
+# .parent() <ADT>
+# .parent(level) <ADT>
+# .raw() <JSON object>
 # .current() <ADT>
 # .next() <ADT>
 # .previous() <ADT>
@@ -15,10 +18,20 @@
 # .unshift(adt)
 # .search(value) <Array>
 
+{isNumber} = require 'util'
+
 module.exports = class Children
 
   constructor: (@_arr = children_arr) ->
     @_cursor = 0
+
+  parent: (level = 1) ->
+    parent = @_arr[@_cursor]
+    parent = parent?._parent for [1..level]
+    parent
+
+  raw: () ->
+    @parent().raw()
 
   from: (index) ->
     @_cursor = if index >= @_arr.length
