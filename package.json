@@ -1,6 +1,6 @@
 {
   "name": "node-adt",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "transfer json to ADT",
   "main": "index.coffee",
   "scripts": {
@@ -10,6 +10,7 @@
   "license": "MIT",
   "keywords": [
     "ADT",
+    "algebraic data type"
     "json",
     "transfer",
     "json-transfer"

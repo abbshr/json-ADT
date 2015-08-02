@@ -1,10 +1,10 @@
-# json-ADT
+# node-adt
 
 [![npm version](https://badge.fury.io/js/node-adt.svg)](http://badge.fury.io/js/node-adt)
 
-针对复杂的json数据, 转换成易于编程操作的Tree ADT.
+针对复杂的json数据, 转换成易于编程操作的Tree ADT(Algebraic Data Types).
 
-JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在JavaScript中操作起来也略有不便. 例如庞大的JSON配置文件, 从中提取需要的值并找出其关联父节点和子节点等要求是比较困难的, 但如果将原始数据结构转换成ADT, 就得到了丰富的操作方法, 如搜索, 查询, 插入, 更新, 删除等等.
+JSON是一种易于表达的数据结构, 但纯粹的JSON Object即便是在JavaScript中操作起来也略有不便. 例如庞大的JSON配置文件, 从中提取需要的值并找出其关联父节点和子节点等要求是比较困难的, 但如果将原始数据结构转换成一种抽象数据型(ADT), 就得到了丰富的操作方法, 如搜索, 查询, 插入, 更新, 删除等等.
 
 ## install
 
