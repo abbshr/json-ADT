@@ -10,7 +10,7 @@
   "license": "MIT",
   "keywords": [
     "ADT",
-    "algebraic data type"
+    "algebraic data type",
     "json",
     "transfer",
     "json-transfer"
